@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gogs
+  labels:
+    app: gogs
+spec:
+  containers:
+    - name: gogs
+      image: gogs/gogs:latest
+      ports:
+        - containerPort: 3000
