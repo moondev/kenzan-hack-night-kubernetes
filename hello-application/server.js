@@ -4,7 +4,7 @@ var os = require('os')
 
 
 app.get('/', function (req, res) {
-  res.send('the hostname is ' + os.hostname())
+  res.send('continer id ' + os.hostname())
 })
 
 app.listen(3000, function () {

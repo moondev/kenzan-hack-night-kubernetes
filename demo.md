@@ -18,6 +18,10 @@
 
 `kubectl apply -f registry.yml`
 
+## Install the registry-ui
+
+`kubectl apply -f registry-ui.yml`
+
 ## Install Jenkins
 
 `kubectl apply -f jenkins.yml`
