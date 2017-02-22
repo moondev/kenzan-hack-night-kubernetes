@@ -43,3 +43,8 @@
 `open http://localhost:3000`
 
 ### Create repo
+
+
+kubectl rollout undo deployment/hello
+
+kubectl scale --replicas=1 deployment/hello
