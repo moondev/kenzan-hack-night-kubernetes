@@ -1,14 +1,16 @@
 node {
 
-   stage 'get hash'
-
-   sh "git rev-parse --short HEAD > .git/commit-id"                        
-   commit_id = readFile('.git/commit-id').replace("\n", "").replace("\r", "")
    container = "hello"
 
    stage 'checkout'
 
    git url: "http://gogs:3000/gogs/${container}.git"
+
+   stage 'get hash'
+
+   sh "git rev-parse --short HEAD > commit-id"                        
+   commit_id = readFile('commit-id').replace("\n", "").replace("\r", "")
+
 
    stage 'build'
 
