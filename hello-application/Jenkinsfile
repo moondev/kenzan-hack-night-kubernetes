@@ -1,0 +1,30 @@
+node {
+
+   stage 'get hash'
+
+   sh "git rev-parse --short HEAD > .git/commit-id"                        
+   commit_id = readFile('.git/commit-id').replace("\n", "").replace("\r", "")
+   container = "hello"
+
+   stage 'checkout'
+
+   git url: "http://gogs:3000/gogs/${container}.git"
+
+   stage 'build'
+
+   sh "docker build -t localhost:5000/${container}:${commit_id} ."
+
+   stage 'test'
+
+   sh "docker run --rm localhost:5000/${container}:${commit_id} uptime"
+
+   stage 'push'
+
+   sh "docker push localhost:5000/${container}:${commit_id}"
+
+   stage 'deploy'
+   
+   sh "kubectl set image --local -o yaml -f deploy.yml hello=localhost:5000/${container}:${commit_id} > deploynew.yml"
+   sh "kubectl apply -f deploynew.yml"
+   
+}

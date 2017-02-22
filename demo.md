@@ -24,8 +24,20 @@
 
 ## Setup Jenkins
 
+`kubectl port-forward jenkins 8888:8080`
+
+### get jenkins admin token
+
+`kubectl exec jenkins cat /root/.jenkins/secrets/initialAdminPassword`
+
 ## Install Gogs
 
 `kubectl apply -f gogs.yml`
 
 ## Setup Gogs
+
+`kubectl port-forward gogs 3000:3000`
+
+`open http://localhost:3000`
+
+### Create repo
