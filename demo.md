@@ -26,9 +26,11 @@
 
 `kubectl port-forward jenkins 8888:8080`
 
+* turn off cross-site forgery protection
+
 ### get jenkins admin token
 
-`kubectl exec jenkins cat /root/.jenkins/secrets/initialAdminPassword`
+`kubectl exec jenkins cat /root/.jenkins/secrets/initialAdminPassword | pbcopy`
 
 ## Install Gogs
 

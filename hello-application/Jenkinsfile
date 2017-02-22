@@ -30,5 +30,6 @@ node {
    
    sh "kubectl set image --local -o yaml -f deploy.yml hello=localhost:5000/${container}:${commit_id} > deploynew.yml"
    sh "kubectl apply -f deploynew.yml"
+   sh "kubectl apply -f service.yml"
    
 }
