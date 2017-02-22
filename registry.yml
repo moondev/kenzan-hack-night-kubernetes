@@ -83,3 +83,21 @@ spec:
     - name: registry
       containerPort: 5000
       hostPort: 5000
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: registry
+  labels:
+    app: registry
+spec:
+  containers:
+    - name: registry
+      image: hyper/docker-registry-web
+      env:
+      - name: REGISTRY_URL
+        value: http://localhost:5000/v2
+      - name: REGISTRY_NAME
+        value: cluster-registry
+      ports:
+        - containerPort: 8080

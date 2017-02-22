@@ -26,11 +26,13 @@
 
 `kubectl port-forward jenkins 8888:8080`
 
-* turn off cross-site forgery protection
 
 ### get jenkins admin token
 
 `kubectl exec jenkins cat /root/.jenkins/secrets/initialAdminPassword | pbcopy`
+
+* turn off cross-site forgery protection
+* install blue ocean plugin
 
 ## Install Gogs
 
@@ -42,9 +44,20 @@
 
 `open http://localhost:3000`
 
-### Create repo
+* create repo
+* add webhook `http://jenkins:8080/job/hello/build?token=hello`
 
+## Setup Job
 
+* new pipeline job
+* enable webhook with token
+
+## push to deploy
+
+## push to deploy again
+
+## rollback deployment
 kubectl rollout undo deployment/hello
 
-kubectl scale --replicas=1 deployment/hello
+## scale deployment
+kubectl scale --replicas=10 deployment/hello
