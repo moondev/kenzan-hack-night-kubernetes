@@ -4,10 +4,9 @@ node {
 
    env.DOCKER_API_VERSION="1.23"
 
-
    stage 'checkout'
-
    git url: "http://gogs:3000/gogs/${container}.git"
+
 
    stage 'get hash'
 

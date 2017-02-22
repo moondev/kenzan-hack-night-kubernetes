@@ -19,3 +19,18 @@ spec:
     - name: docker
       hostPath:
         path: /var/run/docker.sock
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jenkins
+  namespace: default
+spec:
+  selector:
+    app: jenkins
+  type: NodePort
+  ports:
+  - name: gogs
+    port: 8080
+    protocol: TCP
