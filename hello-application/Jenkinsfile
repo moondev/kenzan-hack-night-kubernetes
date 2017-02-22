@@ -16,7 +16,7 @@ node {
 
    stage 'test'
 
-   sh "docker run --rm localhost:5000/${container}:${commit_id} uptime"
+   sh "docker run --rm localhost:5000/${container}:${commit_id} npm test"
 
    stage 'push'
 
