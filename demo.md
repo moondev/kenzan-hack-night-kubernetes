@@ -42,6 +42,8 @@
 
 `kubectl apply -f gogs.yml`
 
+## Build and run test application locally
+
 ## Setup Gogs
 
 `kubectl port-forward gogs 3000:3000`
